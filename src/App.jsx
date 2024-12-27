@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Conversor from "./Conversor";
-import { use } from "react";
+import Usuarios from "./Usuarios";
+import Registro from "./Registro";
 
 function App() {
   const [usuario, setUsuario] = useState("");
   const [clave, setClave] = useState("");
   const [logueado, setLogueado] = useState(false);
+  const [recargar, setRecargar] = useState(false);
 
   function cambiarUsuario(e) {
     setUsuario(e.target.value);
@@ -18,9 +18,14 @@ function App() {
     setClave(e.target.value);
   }
 
+  function recargarAhora() {
+    setRecargar(!recargar);
+  }    
+
   async function ingresar() {
     const peticion = await fetch(
-      "http://localhost:3000/login?usuario=" + usuario + "&clave=" + clave, {
+      "http://localhost:3000/login?usuario=" + usuario + "&clave=" + clave,
+      {
         credentials: "include",
         method: "GET",
       }
@@ -33,11 +38,12 @@ function App() {
   }
 
   async function validar() {
-    const peticion = await fetch(
-      "http://localhost:3000/validar", { credentials: "include", });
+    const peticion = await fetch("http://localhost:3000/validar", {
+      credentials: "include",
+    });
     if (peticion.ok) {
       setLogueado(true);
-    } 
+    }
   }
 
   useEffect(() => {
@@ -47,7 +53,11 @@ function App() {
   if (logueado) {
     return (
       <>
-        <Conversor />
+        <>
+          <Registro recargarAhora={recargarAhora} />
+          <Conversor />
+          <Usuarios recargar={recargar} />
+        </>
       </>
     );
   }
