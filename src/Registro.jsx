@@ -17,7 +17,7 @@ function Registro({ recargarAhora }) {
 
   async function Registar() {
     const peticion = await fetch(
-      "http://localhost:3000/registro?usuario=" +
+      "https://loginexpress-production-df9f.up.railway.app/registro?usuario=" +
         usuarioRegistro +
         "&clave=" +
         claveRegistro,
