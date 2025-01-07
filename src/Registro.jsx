@@ -5,8 +5,6 @@ function Registro({ recargarAhora }) {
   const [usuarioRegistro, setUsuarioRegistro] = useState("");
   const [claveRegistro, setClaveRegistro] = useState("");
 
-  const [usuarios, setUsuarios] = useState([]);
-
   function cambiarUsuarioRegistro(e) {
     setUsuarioRegistro(e.target.value);
   }
@@ -28,6 +26,8 @@ function Registro({ recargarAhora }) {
     if (peticion.ok) {
       alert("Usuario registrado");
       recargarAhora();
+
+      obtenerUsuarios();
     } else {
       alert("Usuario no registrado");
     }
@@ -40,8 +40,8 @@ function Registro({ recargarAhora }) {
       <h1>Registro</h1>
       <input
         placeholder="Usuario"
-        type="usuario"
-        name="clave"
+        type="text"
+        name="usuario"
         id="usuario"
         value={usuarioRegistro}
         onChange={cambiarUsuarioRegistro}
