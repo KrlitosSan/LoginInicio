@@ -20,11 +20,14 @@ function App() {
 
   function recargarAhora() {
     setRecargar(!recargar);
-  }    
+  }
 
   async function ingresar() {
     const peticion = await fetch(
-      "https://loginexpress-production-df9f.up.railway.app/login?usuario=" + usuario + "&clave=" + clave,
+      "https://loginexpress-production-df9f.up.railway.app/login?usuario=" +
+        usuario +
+        "&clave=" +
+        clave,
       {
         credentials: "include",
         method: "GET",
@@ -38,9 +41,12 @@ function App() {
   }
 
   async function validar() {
-    const peticion = await fetch("https://loginexpress-production-df9f.up.railway.app/validar", {
-      credentials: "include",
-    });
+    const peticion = await fetch(
+      "https://loginexpress-production-df9f.up.railway.app/validar",
+      {
+        credentials: "include",
+      }
+    );
     if (peticion.ok) {
       setLogueado(true);
     }
