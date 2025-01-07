@@ -26,8 +26,6 @@ function Registro({ recargarAhora }) {
     if (peticion.ok) {
       alert("Usuario registrado");
       recargarAhora();
-
-      obtenerUsuarios();
     } else {
       alert("Usuario no registrado");
     }
