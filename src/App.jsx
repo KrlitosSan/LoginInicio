@@ -13,15 +13,12 @@ function App() {
   function cambiarUsuario(e) {
     setUsuario(e.target.value);
   }
-
   function cambiarClave(e) {
     setClave(e.target.value);
   }
-
   function recargarAhora() {
     setRecargar(!recargar);
   }
-
   async function ingresar() {
     const peticion = await fetch(
       "https://loginexpress-production-df9f.up.railway.app/login?usuario=" +
@@ -30,7 +27,6 @@ function App() {
         clave,
       {
         credentials: "include",
-        method: "GET",
       }
     );
     if (peticion.ok) {

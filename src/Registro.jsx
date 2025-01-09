@@ -13,7 +13,7 @@ function Registro({ recargarAhora }) {
     setClaveRegistro(e.target.value);
   }
 
-  async function Registar() {
+  async function registar() {
     const peticion = await fetch(
       "https://loginexpress-production-df9f.up.railway.app/registro?usuario=" +
         usuarioRegistro +
@@ -52,7 +52,7 @@ function Registro({ recargarAhora }) {
         value={claveRegistro}
         onChange={cambiarClaveRegistro}
       />
-      <button onClick={Registar}>Registrar</button>
+      <button onClick={registar}>Registrar</button>
     </>
   );
 }

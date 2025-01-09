@@ -49,13 +49,13 @@ function Usuarios({ recargar }) {
         <tbody>
           {usuarios.map((usuario) => (
             <tr key={usuario.id}>
-              <th>{usuario.Id}</th>
+              <th>{usuario.id}</th>
               <th>{usuario.usuario}</th>
               <th>{usuario.clave}</th>
               <th>
                 <button
                   onClick={() => {
-                    eliminarUsuario(usuario.Id);
+                    eliminarUsuario(usuario.id);
                   }}
                 >
                   X
