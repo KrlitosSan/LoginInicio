@@ -5,28 +5,21 @@ function Usuarios({ recargar }) {
   const [usuarios, setUsuarios] = useState([]);
 
   async function obtenerUsuarios() {
-    const peticion = await fetch(
-      "https://loginexpress-production-df9f.up.railway.app/usuarios",
-      {
-        credentials: "include",
-      }
-    );
+    const peticion = await fetch("http://localhost:3000/usuarios", {
+      credentials: "include",
+    });
     if (peticion.ok) {
       const respuesta = await peticion.json();
       setUsuarios(respuesta);
     }
   }
 
-  async function eliminarUsuario(id) {
-    const peticion = await fetch(
-      "https://loginexpress-production-df9f.up.railway.app/usuarios?id=" + id,
-      {
-        credentials: "include",
-        method: "DELETE",
-      }
-    );
+  async function eliminarUsuarios(id) {
+    const peticion = await fetch("http://localhost:3000/usuarios?id=" + id, {
+      credentials: "include",
+      method: "DELETE",
+    });
     if (peticion.ok) {
-      alert("Usuario eliminado");
       obtenerUsuarios();
     }
   }
@@ -40,10 +33,10 @@ function Usuarios({ recargar }) {
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+            <th>id</th>
             <th>Usuario</th>
             <th>Clave</th>
-            <th>Opcion</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +48,7 @@ function Usuarios({ recargar }) {
               <th>
                 <button
                   onClick={() => {
-                    eliminarUsuario(usuario.id);
+                    eliminarUsuarios(usuario.id);
                   }}
                 >
                   X
