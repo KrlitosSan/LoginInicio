@@ -8,26 +8,23 @@ function Registro({ recargarAhora }) {
   function cambiarUsuarioRegistro(e) {
     setUsuarioRegistro(e.target.value);
   }
-
   function cambiarClaveRegistro(e) {
     setClaveRegistro(e.target.value);
   }
 
-  async function registar() {
+  async function registrar() {
     const peticion = await fetch(
-      "https://loginexpress-production-df9f.up.railway.app/registro?usuario=" +
+      "http://localhost:3000/registro?usuario=" +
         usuarioRegistro +
         "&clave=" +
         claveRegistro,
-      {
-        credentials: "include",
-      }
+      { credentials: "include" }
     );
     if (peticion.ok) {
       alert("Usuario registrado");
       recargarAhora();
     } else {
-      alert("Usuario no registrado");
+      alert("No se pudo registrar el usuario");
     }
   }
 
@@ -37,22 +34,23 @@ function Registro({ recargarAhora }) {
     <>
       <h1>Registro</h1>
       <input
-        placeholder="Usuario"
         type="text"
         name="usuario"
         id="usuario"
+        placeholder="Usuario"
         value={usuarioRegistro}
         onChange={cambiarUsuarioRegistro}
       />
       <input
-        placeholder="Clave"
         type="password"
         name="clave"
         id="clave"
+        placeholder="Clave"
         value={claveRegistro}
         onChange={cambiarClaveRegistro}
       />
-      <button onClick={registar}>Registrar</button>
+      <button onClick={registrar}>Registrar</button>
+      {claveRegistro}
     </>
   );
 }
